@@ -48,7 +48,20 @@ function getWorkingHours(empCheck) {
 
 let empHrs = 0;
 empCheck = Math.floor(Math.random() * 10) % 3;
-empHrs = getWorkingHours(empCheck);
-console.log("total working hours are: ",empHrs);
+//empHrs = getWorkingHours(empCheck);
+//console.log("total working hours are: ",empHrs);
 let empWage = empHrs * WAGE_PER_HOUR;
-console.log("Employee Wage: " + empWage);
+//console.log("Employee Wage: " + empWage);
+
+// UC 4 Calculating wages for a month
+const NUM_OF_WORKING_DAYS = 20;
+empHrs = 0;
+
+for (let day = 0; day < NUM_OF_WORKING_DAYS; day++) {
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    empHrs += getWorkingHours(empCheck);
+}
+
+empWage = empHrs * WAGE_PER_HOUR;
+console.log("total working hours are: ",empHrs);
+console.log("Total hours: " + empHrs + " Employee Wage: " + empWage);
