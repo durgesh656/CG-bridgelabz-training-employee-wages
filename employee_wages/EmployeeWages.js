@@ -48,10 +48,10 @@ function getWorkingHours(empCheck) {
 
 let empHrs = 0;
 empCheck = Math.floor(Math.random() * 10) % 3;
-//empHrs = getWorkingHours(empCheck);
-//console.log("total working hours are: ",empHrs);
+empHrs = getWorkingHours(empCheck);
+console.log("total working hours are: ",empHrs);
 let empWage = empHrs * WAGE_PER_HOUR;
-//console.log("Employee Wage: " + empWage);
+console.log("Employee Wage: " + empWage);
 
 // UC 4 Calculating wages for a month
 const NUM_OF_WORKING_DAYS = 20;
@@ -65,3 +65,29 @@ for (let day = 0; day < NUM_OF_WORKING_DAYS; day++) {
 empWage = empHrs * WAGE_PER_HOUR;
 console.log("total working hours are: ",empHrs);
 console.log("Total hours: " + empHrs + " Employee Wage: " + empWage);
+
+
+// UC 5 -> Calculating wages till number of working days and total working hours is reached
+const MAX_WORKING_HOURS = 160;
+const MAX_WORKING_DAYS = 20;
+
+let totalWorkingDays = 0;
+let totalWorkingHours = 0;
+
+// Loop until either max working days or max working hours is reached
+while (totalWorkingDays < MAX_WORKING_DAYS && totalWorkingHours < MAX_WORKING_HOURS) {
+    let empCheck = Math.floor(Math.random() * 10) % 3; // Get random work type
+    let empHrs = getWorkingHours(empCheck);
+
+    // Update total hours and days
+    totalWorkingHours += empHrs;
+    totalWorkingDays++;
+}
+
+// Calculate total wage
+let totalEmpWage = totalWorkingHours * WAGE_PER_HOUR;
+
+// Print the result
+console.log("Total Working Days:", totalWorkingDays);
+console.log("Total Working Hours:", totalWorkingHours);
+console.log("Total Employee Wage:", totalEmpWage);
