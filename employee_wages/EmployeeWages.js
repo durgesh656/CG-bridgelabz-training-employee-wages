@@ -16,22 +16,6 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 
-// let empHrs = 0;
-// empCheck = Math.floor(Math.random() * 10) % 3;
-
-// switch(empCheck){
-//     case IS_PART_TIME:
-//         empHrs = PART_TIME_HOURS;
-//         break;
-//     case IS_FULL_TIME:
-//         empHrs = FULL_TIME_HOURS;
-//         break;
-//     default : empHrs = 0;
-// }
-
-// let empWage = empHrs * WAGE_PER_HOUR;
-// console.log("Employee Wage: " + empWage);
-
 // UC3 to get working hours
 function getWorkingHours(empCheck) {
     switch(empCheck){
@@ -73,11 +57,15 @@ const MAX_WORKING_DAYS = 20;
 
 let totalWorkingDays = 0;
 let totalWorkingHours = 0;
+let dailyWages = []; // Array to store daily wages
 
 // Loop until either max working days or max working hours is reached
 while (totalWorkingDays < MAX_WORKING_DAYS && totalWorkingHours < MAX_WORKING_HOURS) {
     let empCheck = Math.floor(Math.random() * 10) % 3; // Get random work type
     let empHrs = getWorkingHours(empCheck);
+
+    let dailyWage = empHrs * WAGE_PER_HOUR; // Calculate daily wage
+    dailyWages.push(dailyWage); // Store daily wage in array
 
     // Update total hours and days
     totalWorkingHours += empHrs;
@@ -91,3 +79,4 @@ let totalEmpWage = totalWorkingHours * WAGE_PER_HOUR;
 console.log("Total Working Days:", totalWorkingDays);
 console.log("Total Working Hours:", totalWorkingHours);
 console.log("Total Employee Wage:", totalEmpWage);
+console.log("Daily Wages:", dailyWages);
