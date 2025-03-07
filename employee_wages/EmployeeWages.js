@@ -1,3 +1,4 @@
+
 // UC 1 to check if the employee is present or not
 const IS_ABSENT = 0;
 
@@ -229,3 +230,34 @@ while (totalEmplHrs <= MAX_WORKING_HOURS && totalWorkingDays < NUM_OF_WORKING_DA
 
 // Display stored data
 console.log("UC10 - Employee Daily Data:", empDailyData);
+
+// UC11 - Perform Object Operations Using Arrow Functions
+
+// (a) Calculate Total Wage and Total Hours Worked using Reduce
+totalWage = empDailyData.reduce((total, data) => total + data.dailyWage, 0);
+totalHours = empDailyData.reduce((total, data) => total + data.hoursWorked, 0);
+
+console.log("UC11A - Total Wage:", totalWage);
+console.log("UC11A - Total Hours Worked:", totalHours);
+
+// (b) Show Full Working Days using forEach
+console.log("UC11B - Full Working Days:");
+empDailyData.forEach(data => {
+    if (data.hoursWorked === FULL_TIME_HOURS) {
+        console.log(`Day ${data.day} -> Hours Worked: ${data.hoursWorked}, Wage: ${data.dailyWage}`);
+    }
+});
+
+// (c) Show Part Working Days using Map by reducing to String Array
+partWorkingDays = empDailyData
+    .filter(data => data.hoursWorked === PART_TIME_HOURS)
+    .map(data => `Day ${data.day}`);
+
+console.log("UC11C - Part Working Days (String Array):", partWorkingDays);
+
+// (d) Show No Working Days using Map function
+noWorkingDays = empDailyData
+    .filter(data => data.hoursWorked === 0)
+    .map(data => `Day ${data.day}`);
+
+console.log("UC11D - No Working Days (String Array):", noWorkingDays);
