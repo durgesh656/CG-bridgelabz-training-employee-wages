@@ -130,3 +130,29 @@ console.log("UC7F check if Any Part Time Wage :", hasPartTimeWage);
 // (g) Find the Number of Days the Employee Worked
 let numOfDaysWorked = empDailyWageArr.reduce((count, wage) => (wage > 0 ? count + 1 : count), 0);
 console.log("UC7G Number of Days Employee Worked :", numOfDaysWorked);
+
+// UC8: Store Day-wise Wage and Compute Total Wage using Map
+let empDailyWageMap = new Map();
+
+totalEmplHrs = 0;
+totalWorkingDays = 0;
+
+while (totalEmplHrs <= MAX_WORKING_HOURS && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    let empHrs = getWorkingHours(empCheck);
+    totalEmplHrs += empHrs;
+    
+    let dailyWage = calcDailyWage(empHrs);
+    empDailyWageArr.push(dailyWage);
+    
+    // Storing Day and Daily Wage in Map
+    empDailyWageMap.set(totalWorkingDays, dailyWage);
+}
+
+// Display Day-wise Wage
+console.log("UC8A - Day-wise Wage: ", empDailyWageMap);
+
+// Compute Total Wage using Map
+let totalWageFromMap = Array.from(empDailyWageMap.values()).reduce((total, wage) => total + wage, 0);
+console.log("UC8B - Total Wage Computed from Map: ", totalWageFromMap);
