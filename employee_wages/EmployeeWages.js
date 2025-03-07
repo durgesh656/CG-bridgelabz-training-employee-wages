@@ -200,3 +200,32 @@ let noWorkingDays = [...empDailyHoursMap.entries()]
 console.log("UC9B - Full Working Days:", fullWorkingDays);
 console.log("UC9B - Part Working Days:", partWorkingDays);
 console.log("UC9B - No Working Days:", noWorkingDays);
+
+// UC10 - Store Day, Hours Worked, and Wage Earned in an Object
+
+let empDailyData = []; // Array to store objects
+
+totalEmplHrs = 0;
+totalWorkingDays = 0;
+
+while (totalEmplHrs <= MAX_WORKING_HOURS && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    let empHrs = getWorkingHours(empCheck);
+    totalEmplHrs += empHrs;
+
+    let dailyWage = calcDailyWage(empHrs);
+
+    // Storing details in an object
+    let dailyData = {
+        day: totalWorkingDays,
+        hoursWorked: empHrs,
+        dailyWage: dailyWage
+    };
+
+    // Pushing object into array
+    empDailyData.push(dailyData);
+}
+
+// Display stored data
+console.log("UC10 - Employee Daily Data:", empDailyData);
